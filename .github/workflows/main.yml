@@ -25,4 +25,4 @@ jobs:
       with:
         java-version: '11'
     - name: Run Convertigo build
-      run: echo "Build MyFirstNGX" && sh gradlew --no-daemon --stacktrace --debug localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
+      run: echo "Build MyFirstNGX" && sh gradlew --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
