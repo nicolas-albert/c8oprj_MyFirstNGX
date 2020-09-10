@@ -1,0 +1,17 @@
+↑convertigo: 7.9.0.m006
+↓MyFirstNGX [core.Project]: 
+  comment: Convertigo Mobile builder Project
+  corsOrigin: =Origin
+  ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
+  ↓GetTime [sequences.GenericSequence]: 🗏 sequences/GetTime.yaml
+  ↓Project_reference [references.ProjectSchemaReference]: 
+    projectName: mobilebuilder_tpl_7_9_0_Ionic5=https://github.com/convertigo/c8oprj-mobilebuilder-tpl.git:branch=mobilebuilder_tpl_7_9_0_Ionic5
+  ↓MobileApplication [core.MobileApplication]: 
+    comment: Describes the mobile application global properties
+    endpoint: http://192.168.11.124:18080/convertigo
+    splashRemoveMode: beforeUpdate
+    ↓Android [mobileplatforms.Android]: 
+      comment: Android platform
+    ↓iOS [mobileplatforms.IOs]: 
+      comment: iOS platform
+    ↓Application [ngx.components.ApplicationComponent]: 🗏 mobileApplication.yaml

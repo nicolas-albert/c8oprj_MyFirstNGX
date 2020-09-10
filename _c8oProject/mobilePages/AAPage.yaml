@@ -1,0 +1,10 @@
+segment: path-to-aapage
+title: Title for AAPage
+↓Content [ngx.components.UIDynamicElement-1595410207113]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓Text [ngx.components.UIText-1595410226180]: 
+    textValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: plain:some text13
