@@ -26,8 +26,8 @@ jobs:
         java-version: '11'
 
     - name: Echo env
-      run: env ; ls -lha /Users/runner/ ; ls -lha /Users/runner/.gradle ; ls -lha /Users/runner/.gradle/native
+      run: which gradle; env ; ls -lha /Users/runner/ ; ls -lha /Users/runner/.gradle ; ls -lha /Users/runner/.gradle/native
     - name: Run Convertigo build
       run: echo "Build MyFirstNGX" && sh gradlew --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
     - name: Echo env bis
-      run: env ; ls -lha /Users/runner/ ; ls -lha /Users/runner/.gradle ; ls -lha /Users/runner/.gradle/native
+      run: env ; ls -lha /Users/runner/ ; ls -lha /Users/runner/.gradle ; ls -lha /Users/runner/.gradle/native ; ls -lha /Users/runner/.gradle/native/* ; ls -lha /Users/runner/.gradle/wrapper/ ; ls -lha /Users/runner/.gradle/wrapper/* 
