@@ -28,7 +28,7 @@ jobs:
     - name: Echo env
       run: which gradle; env
     - name: Run Convertigo build
-      run: echo "Build MyFirstNGX" && gradle --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
+      run: echo "Build MyFirstNGX" && gradle --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=true -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
     - name: Echo env bis
       run: |
         env
