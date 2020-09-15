@@ -44,6 +44,7 @@ jobs:
       run: |
         env
         pwd
+        mkdir -p build
         ls -lha build
         ls -lha build/*
     - name: Upload packages
