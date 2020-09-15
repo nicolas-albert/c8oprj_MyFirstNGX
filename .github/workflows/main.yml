@@ -36,7 +36,7 @@ jobs:
       run: |
         uuid=`grep UUID -A1 -a ConvertigoWildcard20200914.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
         echo uuid $uuid
-        cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
+        cp ConvertigoWildcard20200914.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
     - name: Run Convertigo build
       run: echo "Build MyFirstNGX" && gradle --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
     - name: Echo env bis
