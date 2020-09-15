@@ -46,7 +46,6 @@ jobs:
         pwd
         mkdir -p build
         ls -lha build
-        ls -lha build/*
     - name: Upload packages
       uses: actions/upload-artifact@v2
       with:
