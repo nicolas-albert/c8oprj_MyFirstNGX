@@ -34,7 +34,7 @@ jobs:
         p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
     - name: Import Mobile Provision
       run: |
-        uuid=`grep UUID -A1 -a ConvertigoWildcard20200914.mobileprovision.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
+        uuid=`grep UUID -A1 -a ConvertigoWildcard20200914.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
         echo uuid $uuid
         cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
     - name: Run Convertigo build
