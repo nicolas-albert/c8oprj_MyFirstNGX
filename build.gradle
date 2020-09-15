@@ -182,7 +182,7 @@ localBuild {
 	if (performsMobileBuild) {
 		dependsOn compileMobileBuilder
 	}
-//	platforms = ['Android']
+	platforms = ['iOS']
 }
 
 //// the 'wrapper' task is used to upgrade the Gradle wrapper of the projet

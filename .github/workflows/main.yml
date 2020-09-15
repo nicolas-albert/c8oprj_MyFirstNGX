@@ -27,8 +27,18 @@ jobs:
 
     - name: Echo env
       run: which gradle; env
+    - name: Import iOS certificates
+      uses: apple-actions/import-codesign-certs@v1
+      with: 
+        p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+        p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+    - name: Import Mobile Provision
+      run: |
+        uuid=`grep UUID -A1 -a ConvertigoWildcard20200914.mobileprovision.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
+        echo uuid $uuid
+        cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
     - name: Run Convertigo build
-      run: echo "Build MyFirstNGX" && gradle --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=true -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
+      run: echo "Build MyFirstNGX" && gradle --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
     - name: Echo env bis
       run: |
         env
