@@ -24,30 +24,47 @@ jobs:
       uses: actions/setup-java@v1.3.0
       with:
         java-version: '11'
-
-    - name: Echo env
-      run: which gradle; env
     - name: Import iOS certificates
       uses: apple-actions/import-codesign-certs@v1
       with: 
-        p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-        p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
-    - name: Import Mobile Provision
-      run: |
-        uuid=`grep UUID -A1 -a ConvertigoWildcard20200914.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
-        echo uuid $uuid
-        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles/
-        cp ConvertigoWildcard20200914.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
+        p12-file-base64: ${{ secrets.IOS_P12 }}
+        p12-password: ${{ secrets.IOS_P12_PASSWORD }}
+    - name: Import IOS Mobile Provision
+      env:
+        IOS_PROFILE_B64: ${{ secrets.IOS_PROFILE_B64 }}
+      run: echo $IOS_PROFILE_B64 | base64 -d > ios.mobileprovision
+    - name: Import Android Keystore
+      env:
+        ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+      run: echo $ANDROID_KEYSTORE_B64 | base64 -d > android.keystore
     - name: Run Convertigo build
-      run: echo "Build MyFirstNGX" && gradle --no-daemon --stacktrace --info localBuild -Pconvertigo.performsMobileBuild=false -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo
+      env:
+        ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        ANDROID_ALIAS: ${{ secrets.ANDROID_ALIAS }}
+        ANDROID_PASSWORD: ${{ secrets.ANDROID_PASSWORD }}
+      run: |
+        echo "Build MyFirstNGX"
+        gradle --no-daemon --stacktrace --info localBuild \
+          -Pconvertigo.performsMobileBuild=false \
+          -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo \
+          -Pconvertigo.localBuild.iosProvisioningProfile=$PWD/ios.mobileprovision \
+          -Pconvertigo.localBuild.androidKeystore=$PWD/android.keystore \
+          -Pconvertigo.localBuild.androidKeystorePassword=$ANDROID_KEYSTORE_PASSWORD \
+          -Pconvertigo.localBuild.androidAlias=$ANDROID_ALIAS \
+          -Pconvertigo.localBuild.androidPassword=$ANDROID_PASSWORD
     - name: Echo env bis
       run: |
         env
         pwd
         mkdir -p build
         ls -lha build
-    - name: Upload packages
+    - name: Upload IOS packages
       uses: actions/upload-artifact@v2
       with:
-        name: Mobile Packages
-        path: build/localBuild/* # or path/to/artifact 
+        name: IOS Packages
+        path: build/localBuild/*.ipa
+    - name: Upload Android packages
+      uses: actions/upload-artifact@v2
+      with:
+        name: Android Packages
+        path: build/localBuild/*.apk 

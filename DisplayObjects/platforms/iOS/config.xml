@@ -28,7 +28,7 @@
 	<engine name="$(CordovaPlatform)$" spec="5.0.1" />
 	
 	<!--  Startup page is FlashUpdate  -->
-	<content src="ionic://localhost/index-fu.html" />
+	<content src="ionic://localhost/index.html" />
 	
 	<!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version"           value="cli-8.1.1" />      <!-- all: current version of PhoneGap -->

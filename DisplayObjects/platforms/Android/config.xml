@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="$(ApplicationID)$" version="$(ApplicationVersion)$" versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="$(ApplicationID)$" version="$(ApplicationVersion)$" versionCode="2" xmlns:android="http://schemas.android.com/apk/res/android">
 	<!-- Find configuration details for this file here : http://docs.build.phonegap.com/ -->
     
 	<!-- Available template variables, replaced before build by Convertigo -->	
@@ -24,7 +24,7 @@
 
 	
 	<!--  Startup page is FlashUpdate  -->
-	<content src="index-fu.html" />
+	<content src="index.html" />
 	
 	<!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version"           value="cli-8.1.1" />      <!-- all: current version of PhoneGap CLI -->
@@ -60,12 +60,12 @@
 		<splash density="land-xhdpi" src="res/screens/android/drawable-land-xhdpi-screen.png" />
 		<splash density="land-xxhdpi" src="res/screens/android/drawable-land-xxhdpi-screen.png" />
 		<splash density="land-xxxhdpi" src="res/screens/android/drawable-land-xxxhdpi-screen.png" />
-		<splash density="port-ldpi" src="res/screens/android/drawable-port-ldpi-screen.png" />
-		<splash density="port-mdpi" src="res/screens/android/drawable-port-mdpi-screen.png" />
-		<splash density="port-hdpi" src="res/screens/android/drawable-port-hdpi-screen.png" />
-		<splash density="port-xhdpi" src="res/screens/android/drawable-port-xhdpi-screen.png" />
-		<splash density="port-xxhdpi" src="res/screens/android/drawable-port-xxhdpi-screen.png" />
-		<splash density="port-xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
+		<splash density="ldpi" src="res/screens/android/drawable-port-ldpi-screen.png" />
+		<splash density="mdpi" src="res/screens/android/drawable-port-mdpi-screen.png" />
+		<splash density="hdpi" src="res/screens/android/drawable-port-hdpi-screen.png" />
+		<splash density="xhdpi" src="res/screens/android/drawable-port-xhdpi-screen.png" />
+		<splash density="xxhdpi" src="res/screens/android/drawable-port-xxhdpi-screen.png" />
+		<splash density="xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
 	</platform>
     
 	
