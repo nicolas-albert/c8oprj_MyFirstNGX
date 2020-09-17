@@ -183,7 +183,7 @@ localBuild {
 		dependsOn compileMobileBuilder
 	}
 	//platforms = ['iOS']
-	mode = 'release'
+	mode = 'debug'
 }
 
 //// the 'wrapper' task is used to upgrade the Gradle wrapper of the projet

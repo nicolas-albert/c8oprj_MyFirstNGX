@@ -34,13 +34,11 @@ jobs:
         IOS_PROFILE_B64: ${{ secrets.IOS_PROFILE_B64 }}
       run: |
         echo $IOS_PROFILE_B64 | base64 -d > ios.mobileprovision
-        grep UUID -A1 -a ios.mobileprovision
     - name: Import Android Keystore
       env:
         ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
       run: |
         echo $ANDROID_KEYSTORE_B64 | base64 -d > android.keystore
-        ls -lh
     - name: Run Convertigo build
       env:
         ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
@@ -49,7 +47,7 @@ jobs:
       run: |
         echo "Build MyFirstNGX"
         gradle --no-daemon --stacktrace --info localBuild \
-          -Pconvertigo.performsMobileBuild=false \
+          -Pconvertigo.performsMobileBuild=true \
           -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo \
           -Pconvertigo.localBuild.iosProvisioningProfile=$PWD/ios.mobileprovision \
           -Pconvertigo.localBuild.androidKeystore=$PWD/android.keystore \
