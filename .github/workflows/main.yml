@@ -22,25 +22,10 @@ jobs:
       uses: actions/setup-java@v1.3.0
       with:
         java-version: '11'
-    - name: Import Android Keystore
-      env:
-        ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
-      run: |
-        echo $ANDROID_KEYSTORE_B64
-        echo $ANDROID_KEYSTORE_B64 | base64 -d > android.keystore
-    - name: Run Convertigo build
-      env:
-        ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-        ANDROID_ALIAS: ${{ secrets.ANDROID_ALIAS }}
-        ANDROID_PASSWORD: ${{ secrets.ANDROID_PASSWORD }}
       run: |
         echo "Build MyFirstNGX"
         gradle --no-daemon --stacktrace --info localBuild \
-          -Pconvertigo.performsMobileBuild=true \
-          -Pconvertigo.localBuild.androidKeystore=$PWD/android.keystore \
-          -Pconvertigo.localBuild.androidKeystorePassword=$ANDROID_KEYSTORE_PASSWORD \
-          -Pconvertigo.localBuild.androidAlias=$ANDROID_ALIAS \
-          -Pconvertigo.localBuild.androidPassword=$ANDROID_PASSWORD
+          -Pconvertigo.performsMobileBuild=true 
     - name: Echo env bis
       run: |
         env
