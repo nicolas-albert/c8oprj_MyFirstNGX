@@ -30,7 +30,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-convertigo-
             
-      - run: gradle --info --stacktrace localBuild
+      - run: |
+          sed -i ~/.gitconfig -e s,github,none,
+          gradle --info --stacktrace localBuild
       
       - store_artifacts:
           path: build/localBuild/MyFirstNGX_Android.apk
