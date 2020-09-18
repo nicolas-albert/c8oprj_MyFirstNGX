@@ -26,6 +26,7 @@ jobs:
       env:
         ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
       run: |
+        echo $ANDROID_KEYSTORE_B64
         echo $ANDROID_KEYSTORE_B64 | base64 -d > android.keystore
     - name: Run Convertigo build
       env:
